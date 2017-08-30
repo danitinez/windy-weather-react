@@ -2,51 +2,52 @@ import React from 'react';
 
 import {
   StyleSheet,
+  ScrollView,
   View,
   Text
 } from 'react-native';
 
-import ColorNumberView from '../ui/ColorNumberView'
+import WeatherBlockView from '../ui/WeatherBlockView';
 
 export default class WeatherScreen extends React.Component {
 
   getData() {
-    return [
-      {
-        temperature: 18,
-        rain: 14,
-        clouds: 12,
-        wind: {
-          speed: 14,
-          degrees: 45
-        }
-      },
-      {
-        temperature: 7,
-        rain: 1,
-        clouds: 0,
-        wind: {
-          speed: 2,
-          degrees: 120
-        }
+
+    var defDict = {
+      temperature: 18,
+      rain: 14,
+      clouds: 12,
+      wind: {
+        speed: 14,
+        degrees: 45
       }
-    ];
+    };
+
+    var dict = []
+
+    for (var i = 0; i < 30; i++) {
+      dict.push(defDict)
+    }
+
+    return dict;
   }
 
 
 
   render() {
-    var a = ["1.2", "4", "3"].map(function(name) {
-      return <ColorNumberView key={name} value={name} style={{marginTop:50, marginLeft:50}}/>
+    var blocksViews = this.getData().map(function(weatherBlockData, idx) {
+      // return <ColorNumberView key={name} value={name} style={{marginTop:50, marginLeft:50}}/>
+      return <WeatherBlockView key={idx} data={weatherBlockData}/>
       // return <Text>{name}</Text>;
     });
     return (
-
-        <View style={styles.container}>
+      <View style={styles.container}>
           <Text style={styles.title}>
             Tauranga
           </Text>
-        {a}
+          <ScrollView horizontal={true} style={styles.blocksContainer}>
+          {blocksViews}
+          </ScrollView>
         </View>
     );
   }
@@ -58,7 +59,9 @@ const styles = StyleSheet.create({
     marginTop: 20,
     alignItems: 'center'
   },
-
+  blocksContainer: {
+    flexDirection: 'row',
+  },
   title: {
     color: '#E3CA51',
     fontSize: 36

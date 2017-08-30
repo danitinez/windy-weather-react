@@ -11,9 +11,9 @@ export default class ColorNumber extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      minColor: 0,
-      maxColor: 40,
-      value: Math.random()*40
+      minColor: props.minColor,
+      maxColor: props.maxColor,
+      value: props.value
     }
   }
 
