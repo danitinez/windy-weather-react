@@ -43,7 +43,7 @@ export default class WeatherScreen extends Component {
           <Text style={styles.title}>
             Tauranga
           </Text>
-          <ScrollView style={styles.blocksContainer}>
+          <ScrollView horizontal style={styles.blocksContainer}>
           {blocksViews}
           </ScrollView>
         </View>
