@@ -5,14 +5,14 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
 import {
-  NavigatorIOS,
-  StyleSheet,
+  // NavigatorIOS,
+  // StyleSheet,
   AppRegistry,
 } from 'react-native';
 
-import WeatherScreen from './app/components/WeatherScreen'
+import WeatherScreen from './app/components/WeatherScreen';
 
 // var styles = StyleSheet.create({
 //   container: {
