@@ -11,6 +11,7 @@ import {
   // StyleSheet,
   AppRegistry,
 } from 'react-native';
+import StackNavigator from 'react-navigation';
 
 import WeatherScreen from './app/components/WeatherScreen';
 

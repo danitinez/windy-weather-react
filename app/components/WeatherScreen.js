@@ -7,6 +7,8 @@ import {
   Text
 } from 'react-native';
 
+// import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+
 import WeatherBlockView from '../ui/WeatherBlockView';
 
 export default class WeatherScreen extends Component {
