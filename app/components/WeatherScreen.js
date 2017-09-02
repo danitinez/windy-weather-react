@@ -4,7 +4,8 @@ import {
   StyleSheet,
   ScrollView,
   View,
-  Text
+  Text,
+  Button
 } from 'react-native';
 
 // import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
@@ -12,6 +13,10 @@ import {
 import WeatherBlockView from '../ui/WeatherBlockView';
 
 export default class WeatherScreen extends Component {
+
+  static navigationOptions = {
+    header: null
+  }
 
   getData() {
     const defDict = {
@@ -35,6 +40,7 @@ export default class WeatherScreen extends Component {
 
 
   render() {
+    const { navigate } = this.props.navigation;
     const blocksViews = this.getData().map((weatherBlockData, idx) =>
       // return <ColorNumberView key={name} value={name} style={{marginTop:50, marginLeft:50}}/>
        <WeatherBlockView key={idx} data={weatherBlockData} />
@@ -45,6 +51,12 @@ export default class WeatherScreen extends Component {
           <Text style={styles.title}>
             Tauranga
           </Text>
+          <Button
+          title="Go to Jane's profile"
+          onPress={() =>
+            navigate('PlacesSearch')
+          }
+          />
           <ScrollView horizontal style={styles.blocksContainer}>
           {blocksViews}
           </ScrollView>

@@ -5,6 +5,10 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 
 export default class PlacesSearch extends Component {
 
+  static navigationOptions = {
+    title: 'Search Place'
+  }
+
   render() {
       return <GooglePlacesAutocomplete />;
   }

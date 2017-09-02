@@ -11,27 +11,14 @@ import {
   // StyleSheet,
   AppRegistry,
 } from 'react-native';
-import StackNavigator from 'react-navigation';
+import { StackNavigator } from 'react-navigation';
 
 import WeatherScreen from './app/components/WeatherScreen';
+import PlacesSearch from './app/components/PlacesSearch';
 
-// var styles = StyleSheet.create({
-//   container: {
-//     flex: 1
-//   }
-// });
+const App = StackNavigator({
+  Home: { screen: WeatherScreen },
+  PlacesSearch: { screen: PlacesSearch }
+});
 
-// class WindyWeatherApp extends Component {
-//   render() {
-//     return (
-//       <NavigatorIOS
-//         style={styles.container}
-//         initialRoute={{
-//           title: 'Tauranga',
-//           component: WeatherScreen,
-//         }}/>
-//     );
-//   }
-// }
-
-AppRegistry.registerComponent('windyDay', () => WeatherScreen);
+AppRegistry.registerComponent('windyDay', () => App);
