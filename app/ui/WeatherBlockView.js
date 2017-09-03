@@ -5,32 +5,30 @@ import React from 'react';
 
 import {
   StyleSheet,
-  View,
-  Text
+  View
 } from 'react-native';
 
-
-
-import ColorNumberView from '../ui/ColorNumberView'
+import ColorNumberView from '../ui/ColorNumberView';
+import ColorCalculatorTemperature from '../ui/helpers/ColorCalculatorTemperature';
 
 export default class WeatherBlockView extends React.Component {
 
-  constructor(props) {
-    super(props);
-    console.log(this.props.data)
-  }
+  // constructor(props) {
+  //   super(props);
+  // console.log(this.props.data);
+  // }
 
-  render () {
+  render() {
+    const value = this.props.data.rain;
     return (
       <View style={styles.container}>
-        <ColorNumberView minColor={0} maxColor={40} value={this.props.data.temperature}/>
-        <ColorNumberView minColor={30} maxColor={20} value={this.props.data.rain}/>
-        <ColorNumberView minColor={30} maxColor={20} value={this.props.data.clouds}/>
-        <ColorNumberView minColor={30} maxColor={20} value={this.props.data.wind.speed}/>
+        <ColorNumberView colorCalculator={new ColorCalculatorTemperature()} value={value} />
+        <ColorNumberView minColor={30} maxColor={20} value={this.props.data.rain} />
+        <ColorNumberView minColor={30} maxColor={20} value={this.props.data.clouds} />
+        <ColorNumberView minColor={30} maxColor={20} value={this.props.data.wind.speed} />
       </View>
     );
   }
-
 }
 
 const styles = StyleSheet.create({
