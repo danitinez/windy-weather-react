@@ -12,7 +12,7 @@ export default class ColorCalculatorBase {
     var bottom = this.colorValues[0];
     var top = this.colorValues[1];
     for (var values in this.colorValues) {
-      console.log(values);
+      // console.log(values);
     }
   }
 }

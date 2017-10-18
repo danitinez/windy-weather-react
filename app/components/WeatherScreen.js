@@ -1,3 +1,5 @@
+//Color Scheme http://www.colourlovers.com/palette/4533009/seawaves
+
 import React, { Component } from 'react';
 
 import {
@@ -9,13 +11,27 @@ import {
 } from 'react-native';
 
 // import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-
+//
 import WeatherBlockView from '../ui/WeatherBlockView';
 
 export default class WeatherScreen extends Component {
 
-  static navigationOptions = {
-    header: null
+  static navigationOptions = ({ navigation }) => {
+    const { navigate } = navigation;
+    return {
+      title: 'Your Places',
+      headerRight:
+        <Button
+        title="Add"
+          onPress={() =>
+          navigate('PlacesSearch')
+        }
+        />
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
   }
 
   getData() {
@@ -48,34 +64,31 @@ export default class WeatherScreen extends Component {
     );
     return (
       <View style={styles.container}>
-          <Text style={styles.title}>
-            Tauranga
-          </Text>
-          <Button
-          title="Go to Jane's profile"
-          onPress={() =>
-            navigate('PlacesSearch')
-          }
-          />
-          <ScrollView horizontal style={styles.blocksContainer}>
+
+        <Text style={styles.title}>
+          Tauranga
+        </Text>
+
+        <ScrollView horizontal style={styles.blocksContainer}>
           {blocksViews}
-          </ScrollView>
-        </View>
+        </ScrollView>
+      </View>
     );
   }
 }
 //http://paletton.com/#uid=11q0u0kupp-5SuzkAsyGojyWYcd
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: '#8EF7C8',
     padding: 30,
-    marginTop: 20,
+    marginTop: 10,
     alignItems: 'center'
   },
   blocksContainer: {
     flexDirection: 'row',
   },
   title: {
-    color: '#E3CA51',
+    color: '#210226',
     fontSize: 36
   }
 });
