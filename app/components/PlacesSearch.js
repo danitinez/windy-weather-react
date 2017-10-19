@@ -1,8 +1,9 @@
 
 import React, { Component } from 'react';
 import {
-  Button, View
-} from 'react-native'
+  Button,
+  View
+} from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
 //https://github.com/FaridSafi/react-native-google-places-autocomplete

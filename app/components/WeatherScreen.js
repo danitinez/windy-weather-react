@@ -30,10 +30,6 @@ export default class WeatherScreen extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
-  }
-
   getData() {
     const defDict = {
       temperature: 18,
@@ -51,12 +47,14 @@ export default class WeatherScreen extends Component {
       dict.push(defDict);
     }
 
+    console.log(JSON.stringify(dict));
+
     return dict;
   }
 
 
   render() {
-    const { navigate } = this.props.navigation;
+    // const { navigate } = this.props.navigation;
     const blocksViews = this.getData().map((weatherBlockData, idx) =>
       // return <ColorNumberView key={name} value={name} style={{marginTop:50, marginLeft:50}}/>
        <WeatherBlockView key={idx} data={weatherBlockData} />
