@@ -1,4 +1,4 @@
-import ColorCalculatorBase from './ColorCalculatorBase'
+import ColorCalculatorBase from './ColorCalculatorBase';
 
 export default class ColorCalculatorTemperature extends ColorCalculatorBase {
 

@@ -47,8 +47,6 @@ export default class WeatherScreen extends Component {
       dict.push(defDict);
     }
 
-    console.log(JSON.stringify(dict));
-
     return dict;
   }
 
