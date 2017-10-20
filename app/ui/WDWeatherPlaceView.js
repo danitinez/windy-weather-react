@@ -3,17 +3,23 @@ import {
   StyleSheet,
   ScrollView,
   View,
-  Text
+  Text,
+  Button,
+  Alert
 } from 'react-native';
 
 import WDColumnNumbers from './WDColumnNumbers';
+import WDLocalStorage from '../storage/WDLocalStorage'
 
 export default class WDWeatherPlaceView extends Component {
 
+
+  removeThisPlace() {
+
+    Alert.alert('saras');
+  }
+
   render() {
-    // const places = (this.state.places != null) ? this.state.places : [];
-    console.log('WDWeatherPlaceView Place');
-    console.log(this.props.place);
     const name = this.props.place.mainText;
     const weatherData = this.props.weatherData;
     const blocksViews = weatherData.map((weatherBlockData, idx) =>
@@ -22,7 +28,12 @@ export default class WDWeatherPlaceView extends Component {
 
     return (
       <View style={styles.container}>
-
+        <View>
+          <Button
+          title='Delete'
+          onPress={this.removeThisPlace}
+          />
+        </View>
         <Text style={styles.title}>
           {name}
         </Text>
@@ -38,6 +49,10 @@ export default class WDWeatherPlaceView extends Component {
 
 //http://paletton.com/#uid=11q0u0kupp-5SuzkAsyGojyWYcd
 const styles = StyleSheet.create({
+containerActions: {
+  flexDirection: 'row',
+  alignItems: 'center'
+},
 container: {
   flex: 1,
   backgroundColor: '#5EF5C8',

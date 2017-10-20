@@ -17,7 +17,6 @@ export default class WDLocalStorage {
 
   static addPlace(place, callback = null) {
     const key = `@${this.storeName}:places`;
-
     AsyncStorage.getItem(key)
     .then((placesStored) => {
       const placesStr = (placesStored == null ? '[]' : placesStored);
@@ -33,8 +32,17 @@ export default class WDLocalStorage {
       if (callback) {
         callback(false, err);
       }
-    }
-    );
+    });
+  }
+
+
+  static removePlace(placeId, callback = null) {
+    const key = `@${this.storeName}:places`;
+    AsyncStorage.getItem(key)
+    then((placesStored) => {
+      const placesStr = (placesStored == null ? '[]' : placesStored);
+      const places = JSON.parse(placesStr);
+    });
   }
 
 }
