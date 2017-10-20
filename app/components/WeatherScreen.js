@@ -7,7 +7,8 @@ import {
   ScrollView,
   View,
   Button,
-  Alert
+  Alert,
+  DeviceEventEmitter
 } from 'react-native';
 import WDLocalStorage from '../storage/WDLocalStorage';
 
@@ -38,19 +39,12 @@ export default class WeatherScreen extends Component {
     };
   }
 
+
   componentDidMount() {
-    WDLocalStorage.getPlaces()
-    .then((places) => {
-      console.log('Places:');
-      console.log(places);
-      this.setState({
-        places
-      });
-    })
-    .catch(error => {
-      console.log(error);
-      Alert.alert('Error', error);
+    DeviceEventEmitter.addListener('placesListChanged', () => {
+      this.refreshList();
     });
+    this.refreshList();
   }
 
   getData() {
@@ -71,6 +65,21 @@ export default class WeatherScreen extends Component {
     }
 
     return dict;
+  }
+
+  refreshList() {
+    WDLocalStorage.getPlaces()
+    .then((places) => {
+      console.log('Places:');
+      console.log(places);
+      this.setState({
+        places
+      });
+    })
+    .catch(error => {
+      console.log(error);
+      Alert.alert('Error', error);
+    });
   }
 
 

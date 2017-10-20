@@ -1,7 +1,8 @@
 
 import React, { Component } from 'react';
 import {
-  Alert
+  Alert,
+  DeviceEventEmitter
 } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import WDLocalStorage from '../storage/WDLocalStorage';
@@ -18,20 +19,12 @@ export default class WDPlacesSearch extends Component {
   }
 
   saveNewPlace(data, details) {
-    console.log('Data');
-    console.log(data);
-    console.log('details');
-    console.log(details);
-
     const place = new WDPlace(data, details);
-    place.printToConsole();
-    console.log('stringify');
-    console.log(JSON.stringify(place));
-
     const { goBack } = this.props.navigation;
 
     WDLocalStorage.addPlace(place, (success, err) => {
       if (success) {
+        DeviceEventEmitter.emit('placesListChanged', {});
         goBack();
       } else {
         Alert.alert(err);
