@@ -1,11 +1,11 @@
 
 import React, { Component } from 'react';
-// import {
-//   Button,
-//   View
-// } from 'react-native';
+import {
+  Alert
+} from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import WDLocalStorage from '../storage/WDLocalStorage';
+import WDPlace from '../model/WDPlace';
 
 
 //https://github.com/FaridSafi/react-native-google-places-autocomplete
@@ -18,12 +18,23 @@ export default class PlacesSearch extends Component {
   }
 
   saveNewPlace(data, details) {
+    console.log('Data');
+    console.log(data);
+    console.log('details');
+    console.log(details);
+
+    const place = new WDPlace(data, details);
+    place.printToConsole();
+    console.log('stringify');
+    console.log(JSON.stringify(place));
+
     const { goBack } = this.props.navigation;
-    const storage = new WDLocalStorage();
-    const place = { data, details };
-    storage.savePlaceInfo(place, (success, err) => {
+
+    WDLocalStorage.addPlace(place, (success, err) => {
       if (success) {
         goBack();
+      } else {
+        Alert.alert(err);
       }
     });
   }
@@ -38,7 +49,8 @@ export default class PlacesSearch extends Component {
           query={{
             // available options: https://developers.google.com/places/web-service/autocomplete
             key: 'AIzaSyBQ57p1t8C98RBU3c1Msu4vlMWNGhXbt7A',
-            language: 'en'
+            language: 'en',
+            types: '(cities)'
           }}
           onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true
             console.log(this.props.navigation);

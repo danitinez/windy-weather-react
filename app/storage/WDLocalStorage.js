@@ -6,10 +6,19 @@ export default class WDLocalStorage {
     this.storeName = 'windyStore';
   }
 
-  savePlaceInfo(placeDict, callback = null) {
-    const name = `@${this.storeName}:place`;
-    const stringToSave = JSON.stringify(placeDict);
-    AsyncStorage.setItem(name, stringToSave)
+  static addPlace(place, callback = null) {
+    const key = `@${this.storeName}:places`;
+    // const stringToSave = JSON.stringify(place);
+
+    AsyncStorage.getItem(key)
+    .then((placesStored) => {
+      console.log('placesStoredString:');
+      console.log(placesStored);
+      const placesStr = (placesStored == null ? '[]' : placesStored);
+      const places = JSON.parse(placesStr);
+      places.push(place);
+      AsyncStorage.setItem(key, JSON.stringify(places));
+    })
     .then(() => {
       if (callback) {
         callback(true, null);
