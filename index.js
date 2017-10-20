@@ -14,11 +14,11 @@ import {
 import { StackNavigator } from 'react-navigation';
 
 import WeatherScreen from './app/components/WeatherScreen';
-import PlacesSearch from './app/components/PlacesSearch';
+import WDPlacesSearch from './app/components/WDPlacesSearch';
 
 const App = StackNavigator({
   Home: { screen: WeatherScreen },
-  PlacesSearch: { screen: PlacesSearch }
+  PlacesSearch: { screen: WDPlacesSearch }
 });
 
 AppRegistry.registerComponent('windyDay', () => App);

@@ -9,7 +9,7 @@ import WDPlace from '../model/WDPlace';
 
 
 //https://github.com/FaridSafi/react-native-google-places-autocomplete
-export default class PlacesSearch extends Component {
+export default class WDPlacesSearch extends Component {
 
   static storage = new WDLocalStorage();
 

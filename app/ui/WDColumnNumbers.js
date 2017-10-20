@@ -11,7 +11,7 @@ import {
 import ColorNumberView from '../ui/ColorNumberView';
 import ColorCalculatorTemperature from '../ui/helpers/ColorCalculatorTemperature';
 
-export default class WeatherBlockView extends React.Component {
+export default class WDWeatherPlaceView extends React.Component {
 
   // constructor(props) {
   //   super(props);

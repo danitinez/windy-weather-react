@@ -6,6 +6,15 @@ export default class WDLocalStorage {
     this.storeName = 'windyStore';
   }
 
+  static getPlaces() {
+    const key = `@${this.storeName}:places`;
+    return AsyncStorage.getItem(key)
+            .then((placesStored) => {
+              const placesStr = (placesStored === undefined ? '[]' : placesStored);
+              return JSON.parse(placesStr);
+            });
+  }
+
   static addPlace(place, callback = null) {
     const key = `@${this.storeName}:places`;
     // const stringToSave = JSON.stringify(place);
