@@ -39,10 +39,31 @@ export default class WDLocalStorage {
   static removePlace(placeId, callback = null) {
     const key = `@${this.storeName}:places`;
     AsyncStorage.getItem(key)
-    then((placesStored) => {
+    .then(placesStored => {
       const placesStr = (placesStored == null ? '[]' : placesStored);
       const places = JSON.parse(placesStr);
+      const place = places.filter(p => p.id === placeId);
+      places.shift(place);
+      AsyncStorage.setItem(key, JSON.stringify(places));
+    })
+    .then(() => {
+      if (callback) {
+        callback(true, null);
+      }
+    }, (err) => {
+      if (callback) {
+        callback(false, err);
+      }
     });
   }
 
+  static getPlace(placeId) {
+    const key = `@${this.storeName}:places`;
+    return AsyncStorage.getItem(key)
+    .then(placesStored => {
+      const placesStr = (placesStored == null ? '[]' : placesStored);
+      const places = JSON.parse(placesStr);
+      return places.filter(p => p.id === placeId);
+    });
+  }
 }

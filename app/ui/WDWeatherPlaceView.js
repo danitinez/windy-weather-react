@@ -5,18 +5,34 @@ import {
   View,
   Text,
   Button,
-  Alert
+  Alert,
+  DeviceEventEmitter
 } from 'react-native';
 
 import WDColumnNumbers from './WDColumnNumbers';
-import WDLocalStorage from '../storage/WDLocalStorage'
+import WDLocalStorage from '../storage/WDLocalStorage';
 
 export default class WDWeatherPlaceView extends Component {
 
+  showRemoveAlert() {
+    Alert.alert(
+      'Confirm deletion',
+      'Are you sure you want to delete this place?',
+      [
+        { text: 'Cancel', onPress: () => console.log('Canceled'), style: 'cancel' },
+        { text: 'Delete', onPress: () => this.removePlace(), style: 'destructive' }
+      ]
+    );
+  }
 
-  removeThisPlace() {
-
-    Alert.alert('saras');
+  removePlace() {
+    WDLocalStorage.removePlace(this.props.place.id, (success, err) => {
+      if (success) {
+        DeviceEventEmitter.emit('placesListChanged', {});
+      } else {
+        Alert.alert('Error trying to delete the place: ');
+      }
+    });
   }
 
   render() {
@@ -31,7 +47,7 @@ export default class WDWeatherPlaceView extends Component {
         <View>
           <Button
           title='Delete'
-          onPress={this.removeThisPlace}
+          onPress={() => this.showRemoveAlert()}
           />
         </View>
         <Text style={styles.title}>
