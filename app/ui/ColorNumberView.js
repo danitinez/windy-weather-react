@@ -30,7 +30,7 @@ export default class ColorNumber extends React.Component {
     // const minColor = this.state.minColor;
     // const maxColor = this.state.maxColor;
     const value = this.state.value;
-    var color = 0x000;
+    let color = 0x000;
     if (this.props.colorCalculator !== undefined) {
       color = this.props.colorCalculator.getColorForValue(value)
     }

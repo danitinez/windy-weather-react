@@ -1,18 +1,35 @@
 
 export default class ColorCalculatorBase {
 
-  _getColor(value, min, max) {
+  getColor(value, low, top) {
     //value from 0 to 1
     //value from 0 to 1
-    const hue = ((max - (value - min)) * 120).toString(10);
-    return ['hsl(', hue, ', 100%, 50%)'].join('');
+    const dv = top.v - low.v;
+    const p = (value - low.v) / dv; //proportion
+    const dh = top.h - low.h;
+    const ds = top.s - low.s;
+    const dl = top.l - low.l;
+
+    //const hue = ((max - (value - min)) * 120).toString(10);
+    const hsl = `hsl(${low.h + (p * dh)}, ${low.s + (p * ds)}%, ${low.l + (p * dl)}%)`;
+    console.log(hsl);
+    return hsl;
   }
 
   getColorForValue(value) {
-    var bottom = this.colorValues[0];
-    var top = this.colorValues[1];
-    for (var values in this.colorValues) {
-      // console.log(values);
+    let colorsLower = null;
+    let colorsUpper = null;
+    for (let i = 1; i < this.colorValues.length; i++) {
+      colorsLower = this.colorValues[i - 1];
+      colorsUpper = this.colorValues[i];
+      if (value < colorsUpper.v) {
+        console.log('Using color param:');
+        console.log(value);
+        console.log(colorsLower);
+        console.log(colorsUpper);
+        break;
+      }
     }
+    return this.getColor(value, colorsLower, colorsUpper);
   }
 }
