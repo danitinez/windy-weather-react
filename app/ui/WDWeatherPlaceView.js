@@ -55,8 +55,10 @@ export default class WDWeatherPlaceView extends Component {
           {name}
         </Text>
 
-        <ScrollView horizontal style={styles.blocksContainer}>
-          {blocksViews}
+        <ScrollView horizontal>
+          <View style={styles.blocksContainer}>
+            {blocksViews}
+          </View>
         </ScrollView>
       </View>
     );

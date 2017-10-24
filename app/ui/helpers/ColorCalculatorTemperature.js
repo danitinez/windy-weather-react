@@ -13,5 +13,4 @@ export default class ColorCalculatorTemperature extends ColorCalculatorBase {
       { v: 55, h: 260, s: 57, l: 50 }
     ];
   }
-
 }
