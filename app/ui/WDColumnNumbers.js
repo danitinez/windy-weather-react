@@ -10,6 +10,9 @@ import {
 
 import ColorNumberView from '../ui/ColorNumberView';
 import ColorCalculatorTemperature from '../ui/helpers/ColorCalculatorTemperature';
+import ColorCalculatorWind from '../ui/helpers/ColorCalculatorWind';
+import ColorCalculatorClouds from '../ui/helpers/ColorCalculatorClouds';
+import ColorCalculatorRain from '../ui/helpers/ColorCalculatorRain';
 
 export default class WDWeatherPlaceView extends React.Component {
 
@@ -20,13 +23,13 @@ export default class WDWeatherPlaceView extends React.Component {
 
   render() {
     // const value = this.props.data.rain;
-    const value = Math.round(Math.random() * 100 - 50);
+    // const value = Math.round(Math.random() * 100 - 50);
     return (
       <View style={styles.container}>
-        <ColorNumberView colorCalculator={new ColorCalculatorTemperature()} value={value} />
-        <ColorNumberView minColor={30} maxColor={20} value={this.props.data.rain} />
-        <ColorNumberView minColor={30} maxColor={20} value={this.props.data.clouds} />
-        <ColorNumberView minColor={30} maxColor={20} value={this.props.data.wind.speed} />
+        <ColorNumberView colorCalculator={new ColorCalculatorTemperature()} value={this.props.t} />
+        <ColorNumberView colorCalculator={new ColorCalculatorWind()} value={this.props.t + 30} />
+        <ColorNumberView colorCalculator={new ColorCalculatorClouds()} value={this.props.t + 30} />
+        <ColorNumberView colorCalculator={new ColorCalculatorRain()} value={(this.props.t + 30)/10} />
       </View>
     );
   }

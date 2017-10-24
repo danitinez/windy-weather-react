@@ -48,8 +48,8 @@ export default class WeatherScreen extends Component {
   }
 
   getData() {
-    const defDict = {
-      temperature: 18,
+    let defDict = {
+      temperature: 0,
       rain: 14,
       clouds: 12,
       wind: {
@@ -60,7 +60,7 @@ export default class WeatherScreen extends Component {
 
     const dict = [];
 
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 100; i++) {
       dict.push(defDict);
     }
 

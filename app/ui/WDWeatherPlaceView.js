@@ -38,8 +38,9 @@ export default class WDWeatherPlaceView extends Component {
   render() {
     const name = this.props.place.mainText;
     const weatherData = this.props.weatherData;
+
     const blocksViews = weatherData.map((weatherBlockData, idx) =>
-       <WDColumnNumbers key={idx} data={weatherBlockData} />
+      <WDColumnNumbers key={idx} data={weatherBlockData} t={idx * 3 - 30} />
     );
 
     return (
