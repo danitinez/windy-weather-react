@@ -9,7 +9,7 @@ import {
   DeviceEventEmitter
 } from 'react-native';
 
-import WDColumnNumbers from './WDColumnNumbers';
+import WDDay from './WDDay';
 import WDLocalStorage from '../storage/WDLocalStorage';
 
 export default class WDWeatherPlaceView extends Component {
@@ -30,6 +30,7 @@ export default class WDWeatherPlaceView extends Component {
       if (success) {
         DeviceEventEmitter.emit('placesListChanged', {});
       } else {
+        console.log(err);
         Alert.alert('Error trying to delete the place: ');
       }
     });
@@ -37,10 +38,10 @@ export default class WDWeatherPlaceView extends Component {
 
   render() {
     const name = this.props.place.mainText;
-    const weatherData = this.props.weatherData;
-
-    const blocksViews = weatherData.map((weatherBlockData, idx) =>
-      <WDColumnNumbers key={idx} data={weatherBlockData} t={idx * 3 - 30} />
+    const forecast = this.props.place.forecast;
+    console.log(forecast);
+    const blocksViews = forecast.map((forecastDay, idx) =>
+      <WDDay key={idx} forecastDay={forecastDay} t={(idx * 3) - 30} />
     );
 
     return (
@@ -54,7 +55,6 @@ export default class WDWeatherPlaceView extends Component {
         <Text style={styles.title}>
           {name}
         </Text>
-
         <ScrollView horizontal>
           <View style={styles.blocksContainer}>
             {blocksViews}

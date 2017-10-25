@@ -9,21 +9,34 @@ import {
   View
 } from 'react-native';
 
-export class WDDayHeader extends React.Component {
+export default class WDDayHeader extends React.Component {
 
   render() {
+    const date = new Date(this.props.date);
+    const day = weekDayToDate(date.getDay());
+    const formatted = `${day} ${date.getDate()}`;
+
     return (
       <View style={styles.container}>
-        <Text>Monday</Text>
+        <Text style={styles.text}>{formatted}</Text>
       </View>
     );
   }
 
 }
 
+function weekDayToDate(weekDay) {
+  const days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thu', 'Fri', 'Sat'];
+  return days[weekDay];
+}
+
 const styles = StyleSheet.create({
+  text: {
+    // backgroundColor: 'blue',
+  },
   container: {
-    width: 150,
-    height: 30
+    // flex: 1,
+    // backgroundColor: 'red',
+    alignItems: 'center'
   }
 });

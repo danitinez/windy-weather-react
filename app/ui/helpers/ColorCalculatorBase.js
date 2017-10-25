@@ -12,7 +12,6 @@ export default class ColorCalculatorBase {
 
     //const hue = ((max - (value - min)) * 120).toString(10);
     const hsl = `hsl(${low.h + (p * dh)}, ${low.s + (p * ds)}%, ${low.l + (p * dl)}%)`;
-    console.log(hsl);
     return hsl;
   }
 
@@ -23,10 +22,6 @@ export default class ColorCalculatorBase {
       colorsLower = this.colorValues[i - 1];
       colorsUpper = this.colorValues[i];
       if (value < colorsUpper.v) {
-        console.log('Using color param:');
-        console.log(value);
-        console.log(colorsLower);
-        console.log(colorsUpper);
         break;
       }
     }

@@ -47,54 +47,29 @@ export default class WeatherScreen extends Component {
     this.refreshList();
   }
 
-  getData() {
-    let defDict = {
-      temperature: 0,
-      rain: 14,
-      clouds: 12,
-      wind: {
-        speed: 14,
-        degrees: 45
-      }
-    };
-
-    const dict = [];
-
-    for (let i = 0; i < 100; i++) {
-      dict.push(defDict);
-    }
-
-    return dict;
-  }
-
   refreshList() {
     WDLocalStorage.getPlaces()
     .then((places) => {
-      console.log('Places:');
-      console.log(places);
       this.setState({
         places
       });
     })
     .catch(error => {
-      console.log(error);
       Alert.alert('Error', error);
     });
   }
 
-
   render() {
     const places = (this.state.places != null) ? this.state.places : [];
-    const data = this.getData();
-    const blocksViews = places.map((place, idx) =>
-       <WDWeatherPlaceView key={idx} place={place} weatherData={data} />
+
+    const placesView = places.map((place, idx) =>
+       <WDWeatherPlaceView key={idx} place={place} />
     );
 
     return (
       <View style={styles.container}>
-
         <ScrollView style={styles.blocksContainer}>
-          {blocksViews}
+           {placesView}
         </ScrollView>
       </View>
     );

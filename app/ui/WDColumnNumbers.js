@@ -24,8 +24,10 @@ export default class WDWeatherPlaceView extends React.Component {
   render() {
     // const value = this.props.data.rain;
     // const value = Math.round(Math.random() * 100 - 50);
+    const hour = (this.props.position * 4) + 4 + 'h';
     return (
       <View style={styles.container}>
+        <ColorNumberView value={hour} />
         <ColorNumberView colorCalculator={new ColorCalculatorTemperature()} value={this.props.t} />
         <ColorNumberView colorCalculator={new ColorCalculatorWind()} value={this.props.t + 30} />
         <ColorNumberView colorCalculator={new ColorCalculatorClouds()} value={this.props.t + 30} />

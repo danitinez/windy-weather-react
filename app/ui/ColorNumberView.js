@@ -30,14 +30,14 @@ export default class ColorNumber extends React.Component {
     // const minColor = this.state.minColor;
     // const maxColor = this.state.maxColor;
     const value = this.state.value;
-    let color = 0x000;
+    let color = '#FFFFFF';
     if (this.props.colorCalculator !== undefined) {
       color = this.props.colorCalculator.getColorForValue(value)
     }
 
     return (
         <View style={[styles.container, { backgroundColor: color }]}>
-          <Text style={{ flex: 1, justifyContent: 'space-between' }}>{this.props.value}</Text>
+          <Text>{this.props.value}</Text>
         </View>
       );
     }
@@ -45,7 +45,9 @@ export default class ColorNumber extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'red',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
     width: 30,
     height: 30
   }
