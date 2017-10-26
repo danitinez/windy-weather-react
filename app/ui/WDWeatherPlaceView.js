@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 
 import WDDay from './WDDay';
+import WDColumnIcons from './WDColumnIcons';
 import WDLocalStorage from '../storage/WDLocalStorage';
 
 export default class WDWeatherPlaceView extends Component {
@@ -56,6 +57,7 @@ export default class WDWeatherPlaceView extends Component {
           {name}
         </Text>
         <ScrollView horizontal>
+          <WDColumnIcons />
           <View style={styles.blocksContainer}>
             {blocksViews}
           </View>
