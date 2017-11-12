@@ -12,10 +12,9 @@ import {
   Image,
   Text,
   TouchableOpacity,
-  Alert
 } from 'react-native';
 
-export default class WDIcon {
+export default class WDIcon extends React.Component {
 
   render() {
     const icons = {
@@ -25,14 +24,14 @@ export default class WDIcon {
       rain: require('../resources/img/rain.png'),
     }
 
-    let text = null;
+    let textComponent = null;
     if (this.props.onPress != null) {
-      text = (
+      textComponent = (
         <TouchableOpacity onPress={this.props.onPress} >
           <Text style={[styles.text, styles.textButton]}>{this.props.title}</Text>
         </TouchableOpacity>);
     } else {
-      text = (
+      textComponent = (
         <Text style={styles.text}>{this.props.title}</Text>
       );
     }
@@ -40,7 +39,6 @@ export default class WDIcon {
     return (
       <View style={styles.container}>
         <Image style={styles.image} source={icons[this.props.type]} />
-        {text}
       </View>
     );
   }
@@ -57,13 +55,17 @@ const styles = StyleSheet.create({
   image: {
     tintColor: '#666'
   },
-  mainContainer: {
-    flex: 1,
-    alignItems: 'flex-start'
-  },
+  // mainContainer: {
+  //   flex: 1,
+  //   alignItems: 'flex-start'
+  // },
   container: {
+    width: 30,
+    height: 30,
+    backgroundColor: 'red',
     flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center'
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 });

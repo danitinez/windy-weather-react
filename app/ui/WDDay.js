@@ -20,15 +20,19 @@ export default class WDDay extends React.Component {
       return (
       <View>
         <WDDayHeader date={forecastDay.date} />
-        <ScrollView horizontal>
+        <View style={styles.container}>
           {blocksViews}
-        </ScrollView>
+        </View>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'row'
+  },
   headerStyle: {
     width: '100%'
   }

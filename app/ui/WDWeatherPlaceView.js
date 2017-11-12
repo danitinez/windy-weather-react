@@ -56,37 +56,40 @@ export default class WDWeatherPlaceView extends Component {
         <Text style={styles.title}>
           {name}
         </Text>
-        <ScrollView horizontal>
+        <View style={styles.visualizerContainer}>
           <WDColumnIcons />
-          <View style={styles.blocksContainer}>
-            {daysViews}
-          </View>
-        </ScrollView>
+          <ScrollView horizontal style={{ marginLeft: 30 }}>
+              {daysViews}
+          </ScrollView>
+        </View>
       </View>
     );
   }
-
 }
 
 //http://paletton.com/#uid=11q0u0kupp-5SuzkAsyGojyWYcd
 const styles = StyleSheet.create({
-containerActions: {
-  flexDirection: 'row',
-  alignItems: 'center'
-},
-container: {
-  flex: 1,
-  backgroundColor: '#5EF5C8',
-  padding: 30,
-  marginTop: 10,
-  alignItems: 'center'
-},
-blocksContainer: {
-  width: '100%',
-  flexDirection: 'row',
-},
-title: {
-  color: '#210226',
-  fontSize: 36
-}
+  containerActions: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  container: {
+    flex: 1,
+    backgroundColor: '#5EF5C8',
+    padding: 30,
+    marginTop: 10,
+    alignItems: 'center'
+  },
+  dataContainer: {
+    width: '100%',
+    flexDirection: 'row',
+  },
+  visualizerContainer: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+  title: {
+    color: '#210226',
+    fontSize: 36
+  }
 });
