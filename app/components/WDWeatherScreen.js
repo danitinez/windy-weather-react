@@ -11,12 +11,9 @@ import {
   DeviceEventEmitter
 } from 'react-native';
 import WDLocalStorage from '../storage/WDLocalStorage';
-
-// import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-//
 import WDWeatherPlaceView from '../ui/WDWeatherPlaceView';
 
-export default class WeatherScreen extends Component {
+export default class WDWeatherScreen extends Component {
 
   static navigationOptions = ({ navigation }) => {
     const { navigate } = navigation;
@@ -39,7 +36,6 @@ export default class WeatherScreen extends Component {
     };
   }
 
-
   componentDidMount() {
     DeviceEventEmitter.addListener('placesListChanged', () => {
       this.refreshList();
@@ -61,7 +57,6 @@ export default class WeatherScreen extends Component {
 
   render() {
     const places = (this.state.places != null) ? this.state.places : [];
-
     const placesView = places.map((place, idx) =>
        <WDWeatherPlaceView key={idx} place={place} />
     );

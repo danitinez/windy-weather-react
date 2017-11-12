@@ -13,11 +13,11 @@ import {
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
-import WeatherScreen from './app/components/WeatherScreen';
+import WDWeatherScreen from './app/components/WDWeatherScreen';
 import WDPlacesSearch from './app/components/WDPlacesSearch';
 
 const App = StackNavigator({
-  Home: { screen: WeatherScreen },
+  Home: { screen: WDWeatherScreen },
   PlacesSearch: { screen: WDPlacesSearch }
 });
 

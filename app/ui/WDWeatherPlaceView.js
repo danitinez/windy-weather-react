@@ -41,7 +41,7 @@ export default class WDWeatherPlaceView extends Component {
     const name = this.props.place.mainText;
     const forecast = this.props.place.forecast;
     console.log(forecast);
-    const blocksViews = forecast.map((forecastDay, idx) =>
+    const daysViews = forecast.map((forecastDay, idx) =>
       <WDDay key={idx} forecastDay={forecastDay} t={(idx * 3) - 30} />
     );
 
@@ -50,7 +50,7 @@ export default class WDWeatherPlaceView extends Component {
         <View>
           <Button
           title='Delete'
-          onPress={() => this.showRemoveAlert()}
+          onPress={this.showRemoveAlert}
           />
         </View>
         <Text style={styles.title}>
@@ -59,7 +59,7 @@ export default class WDWeatherPlaceView extends Component {
         <ScrollView horizontal>
           <WDColumnIcons />
           <View style={styles.blocksContainer}>
-            {blocksViews}
+            {daysViews}
           </View>
         </ScrollView>
       </View>

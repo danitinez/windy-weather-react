@@ -11,5 +11,4 @@ export default class ColorCalculatorWind extends ColorCalculatorBase {
       { v: 200, h: 254, s: 68, l: 60 },
     ];
   }
-
 }

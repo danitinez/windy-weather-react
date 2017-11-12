@@ -31,7 +31,7 @@ export default class WDWeatherPlaceView extends React.Component {
         <ColorNumberView colorCalculator={new ColorCalculatorTemperature()} value={this.props.t} />
         <ColorNumberView colorCalculator={new ColorCalculatorWind()} value={this.props.t + 30} />
         <ColorNumberView colorCalculator={new ColorCalculatorClouds()} value={this.props.t + 30} />
-        <ColorNumberView colorCalculator={new ColorCalculatorRain()} value={(this.props.t + 30)/10} />
+        <ColorNumberView colorCalculator={new ColorCalculatorRain()} value={(this.props.t + 30) / 10} />
       </View>
     );
   }
